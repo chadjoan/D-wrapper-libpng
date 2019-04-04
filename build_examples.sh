@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 script_dir=${0%/*}
 set -v
-DFLAGS="-I.. -L-Llib -L-lpng_wrapper -L-lpng -g -debug"
-dmd examples/write_bars.d ${DFLAGS} -ofbin/write_bars
-rm -f bin/*.o
+DFLAGS="-Isource -L-Llib -L-ld_wrapper_libpng -L-lpng -g -debug"
+dmd source/examples/write_bars.d ${DFLAGS} -ofbin/examples/write_bars
+rm -f bin/examples/*.o

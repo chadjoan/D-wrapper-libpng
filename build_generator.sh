@@ -2,12 +2,12 @@
 script_dir=${0%/*}
 set -v
 cd ${script_dir}
-dmd generator/wrapper_generator.d -ofbin/wrapper_generator
+dmd source/generator/wrapper_generator.d -ofbin/generator/wrapper_generator
 RESULT=$?
 if [ $RESULT -ne 0 ]; then
-	rm -f generated/*.c
-	rm -f generated/*.h
-	rm -f generated/*.d
+	rm -f source/libpng/generated/*.c
+	rm -f source/libpng/generated/*.h
+	rm -f source/libpng/generated/*.d
 	exit $RESULT
 fi
-rm -f bin/*.o
+rm -f bin/generator/*.o

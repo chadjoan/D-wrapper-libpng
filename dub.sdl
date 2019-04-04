@@ -1,0 +1,16 @@
+name "d-wrapper-libpng"
+description "Thick wrapper that allows D programs to use libpng; translates setjmp/longjmp error handling into D exceptions. "
+authors "Chad Joan"
+copyright "Copyright © 2019, Chad Joan"
+license "zlib"
+systemDependencies "libpng"
+preBuildCommands "cd $PACKAGE_DIR; ./build.sh"
+lflags "-Llib"
+libs "libpng" "d_wrapper_libpng"
+configuration "examples" {
+	targetType "executable"
+	targetName "write_bars"
+	targetPath "bin/examples"
+	mainSourceFile "source/examples/write_bars.d"
+	excludedSourceFiles "source/generator/*" // Already handled by the build.sh file. Will create conflicting main() if dub tries to compile by itself.
+}
