@@ -1,4 +1,4 @@
-Summary:
+## Summary ##
 
 This is a wrapper of the libpng library for D.
 
@@ -7,26 +7,32 @@ events into thrown exceptions on the D side of the wrapper.
 
 Code that uses this wrapper should import the png.d file and none of the others.
 Example:
+```D
 import libpng.png;
+```
 
 This wrapper requires additional code that is compiled into lib/libpng_wrapper.a
 which should be statically linked into the D code that calls libpng, along with
 the libpng library file.  This library contains compiled versions of the .d
 files in the wrapper, so it is not necessary to pass those to dmd.
 Example:
+```bash
 dmd myproject/myprogram.d -Imyproject -L-Lmyproject/libpng/lib -L-lpng_wrapper -L-lpng
+```
 
 The directory structure for the above examples is as follows:
+```
 myproject/myprogram.d
 myproject/libpng/png.d
 myproject/libpng/lib/libpng_wrapper.d
 myproject/libpng/<other libpng wrapper files; not important>
+```
 
-For more detailed usage information, see libpng/examples/write_bars.d
+For more detailed usage information, see `libpng/examples/write_bars.d`
 
 
 
-Implementation Overview:
+## Implementation Overview ##
 
 The libpng wrapper from C to D is more complicated than most.
 
